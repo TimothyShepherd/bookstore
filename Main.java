@@ -1,14 +1,17 @@
+// git clone https://github.com/timothyshepherd/bookstore.git
+
 package Library;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main{
 
-    public static void main(String[] args) throws SQLException{
+    public static void main(String[] args) throws SQLException, IOException, InterruptedException{
 
         Connection connection;
         connection = ConnectionFactory.getConnection();
@@ -22,14 +25,14 @@ public class Main{
 
             boolean proceed = false;
 
-            // Sign/Banner
+            // Sign || Banner
 //            System.out.println("""
 //
 //                    """);
 
             String welcomeMenu = """
                     ____________________________
-                    |   Welcome to Book Store  |
+                    |  Welcome to BookStorage  |
                     |__________________________|
                     | Please select an action: |
                     |--------------------------|
@@ -80,7 +83,7 @@ public class Main{
                         }else{
                             System.out.println("\nInvalid login credentials.");
                             System.out.println(welcomeMenu);
-                             }
+                            }
                         }
 
                         case 2 -> {
