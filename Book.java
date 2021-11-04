@@ -22,6 +22,10 @@ public class Book{
         this.description = description;
     }
 
+    public Book(String category){
+
+    }
+
     public int getIsbn(){
         return isbn;
     }
