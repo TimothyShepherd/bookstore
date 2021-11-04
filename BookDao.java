@@ -7,4 +7,13 @@ public interface BookDao{
 
     List<Book> getCategories() throws SQLException;
 
+    List<Book> getBooks() throws SQLException;
+
+    List<Book> getBookByTitle(String title) throws SQLException;
+
+    List<Book> getBookByAuthor(String author) throws SQLException;
+
+    List<Book> getBookByCategory(String category) throws SQLException;
+
+    Book getBookByIsbn(int isbn) throws SQLException;
 }

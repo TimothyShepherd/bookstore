@@ -9,6 +9,10 @@ public class Book{
     public String category;
     public String description;
 
+    public Book(){
+
+    }
+
     public Book(int isbn, String title, String author, float price, String category, String description){
         this.isbn = isbn;
         this.title = title;
