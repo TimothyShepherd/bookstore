@@ -136,7 +136,7 @@ public class BookImpl implements BookDao{
         table[0] = new String[]{"________________________________\n ISBN: ", String.valueOf(book.getIsbn()) + "\n--------------------------------"};
         table[1] = new String[]{"Title: ", book.getTitle()};
         table[2] = new String[]{"Author: ", book.getAuthor()};
-        table[3] = new String[]{"Price: $", String.valueOf(book.getPrice())};
+        table[3] = new String[]{"Price: ", "$" + String.valueOf(book.getPrice())};
         table[4] = new String[]{"Description: ", book.getDescription()};
         table[5] = new String[]{"Category: ", book.getCategory() + "\n________________________________"};
 
@@ -169,6 +169,13 @@ public class BookImpl implements BookDao{
                 preparedStatement.setFloat(3, price);
                 int count = preparedStatement.executeUpdate();
                 if(count > 0){
+                    try{
+                        CLS.cls();
+                    }catch(IOException e){
+                        e.printStackTrace();
+                    }catch(InterruptedException e){
+                        e.printStackTrace();
+                    }
                     System.out.println("\nBook has been added to cart.\n");
                     Menus.bookstoreMenu();
                 }else{

@@ -83,11 +83,24 @@ public class Main{
                         }
                         // Allows the user to login only if 1 or more rows are returned.
                         if(size >= 1){
-                            CLS.cls();
+                            try{
+                                CLS.cls();
+                            }catch(IOException e){
+                                e.printStackTrace();
+                            }catch(InterruptedException e){
+                                e.printStackTrace();
+                            }
                             System.out.println("\nLogin Successful!");
                             proceed = true;
                             Menus.bookstoreMenu();
                         }else{
+                            try{
+                                CLS.cls();
+                            }catch(IOException e){
+                                e.printStackTrace();
+                            }catch(InterruptedException e){
+                                e.printStackTrace();
+                            }
                             System.out.println("\nInvalid login credentials.");
                             System.out.println(welcomeMenu);
                             }
@@ -116,9 +129,23 @@ public class Main{
                             preparedStatement2.setString(4, user.getPassword());
                             int count = preparedStatement2.executeUpdate();
                             if(count > 0){
+                                try{
+                                    CLS.cls();
+                                }catch(IOException e){
+                                    e.printStackTrace();
+                                }catch(InterruptedException e){
+                                    e.printStackTrace();
+                                }
                                 System.out.println("\nYour account has been created.");
-                                System.out.println("\nYou may now login at the main menu.");
+                                System.out.println("\nYou may now login.");
                             }else{
+                                try{
+                                    CLS.cls();
+                                }catch(IOException e){
+                                    e.printStackTrace();
+                                }catch(InterruptedException e){
+                                    e.printStackTrace();
+                                }
                                 System.out.println("Sorry. Something went wrong.");
                             }
                             System.out.println(welcomeMenu);

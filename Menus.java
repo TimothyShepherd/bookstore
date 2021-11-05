@@ -128,7 +128,7 @@ public class Menus{
                     List<Book> books = dao.getBookByAuthor(bookAuthor);
                     for(Book book : books){
                         System.out.printf(
-                                "%-2s%-8s%-2s%-40s%-2s%-30s%-2s%-17s%-2s%-20s%%n",
+                                "%-2s%-8s%-2s%-40s%-2s%-30s%-2s%-17s%-2s%-20s%n",
                                 "|",
                                 "ISBN: " + book.getIsbn(),
                                 "|",
