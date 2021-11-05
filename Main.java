@@ -19,6 +19,13 @@ public class Main{
         User user = new User();
 
         // Outer while loop enables logout functionality
+        try{
+            CLS.cls();
+        }catch(IOException e){
+            e.printStackTrace();
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
         boolean running = true;
         while(running)
         {
@@ -29,7 +36,6 @@ public class Main{
 //            System.out.println("""
 //
 //                    """);
-
             String welcomeMenu = """
                     ____________________________
                     |  Welcome to BookStorage  |
@@ -77,6 +83,7 @@ public class Main{
                         }
                         // Allows the user to login only if 1 or more rows are returned.
                         if(size >= 1){
+                            CLS.cls();
                             System.out.println("\nLogin Successful!");
                             proceed = true;
                             Menus.bookstoreMenu();

@@ -13,6 +13,16 @@ public class Book{
 
     }
 
+    public Book(String category){
+        this.category = category;
+    }
+
+    public Book(String title, String author, float price){
+        this.title = title;
+        this.author = author;
+        this.price = price;
+    }
+
     public Book(int isbn, String title, String author, float price, String category, String description){
         this.isbn = isbn;
         this.title = title;
@@ -20,10 +30,6 @@ public class Book{
         this.price = price;
         this.category = category;
         this.description = description;
-    }
-
-    public Book(String category){
-
     }
 
     public int getIsbn(){

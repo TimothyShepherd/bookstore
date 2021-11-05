@@ -15,5 +15,7 @@ public interface BookDao{
 
     Book getBookByIsbn(int isbn) throws SQLException;
 
+    Book addToCart(int isbn) throws SQLException;
+
     List<Book> getCart() throws SQLException;
 }
