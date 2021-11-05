@@ -69,7 +69,7 @@ public class Menus{
                     List<Book> books = dao.getBookByCategory(bookCategory);
                     for(Book book : books){
                         System.out.printf(
-                                "%-2s%-8s%-2s%-40s%-2s%-30s%-2s%-15s%-2s%-20s%n",
+                                "%-2s%-8s%-2s%-40s%-2s%-30s%-2s%-17s%-2s%-20s%n",
                                 "|",
                                 "ISBN: " + book.getIsbn(),
                                 "|",
@@ -99,7 +99,7 @@ public class Menus{
                     List<Book> books = dao.getBookByTitle(bookTitle);
                     for(Book book : books){
                         System.out.printf(
-                                "%-2s%-8s%-2s%-40s%-2s%-30s%-2s%-15s%-2s%-20s%n",
+                                "%-2s%-8s%-2s%-40s%-2s%-30s%-2s%-17s%-2s%-20s%n",
                                 "|",
                                 "ISBN: " + book.getIsbn(),
                                 "|",
@@ -128,7 +128,7 @@ public class Menus{
                     List<Book> books = dao.getBookByAuthor(bookAuthor);
                     for(Book book : books){
                         System.out.printf(
-                                "%-2s%-8s%-2s%-40s%-2s%-30s%-2s%-15s%-2s%-20s%%n",
+                                "%-2s%-8s%-2s%-40s%-2s%-30s%-2s%-17s%-2s%-20s%%n",
                                 "|",
                                 "ISBN: " + book.getIsbn(),
                                 "|",
@@ -160,13 +160,13 @@ public class Menus{
                     table[0] = new String[] { "________________________________\n ISBN: ", String.valueOf(book.getIsbn()) + "\n--------------------------------" };
                     table[1] = new String[] { "Title: ", book.getTitle() };
                     table[2] = new String[] { "Author: ", book.getAuthor() };
-                    table[3] = new String[] { "Price: $", String.valueOf(book.getPrice()) };
+                    table[3] = new String[] { "Price: ", "$" + String.valueOf(book.getPrice()) };
                     table[4] = new String[] { "Category: ", book.getCategory() + "\n________________________________" };
 
                     for(final Object[] row : table){
                         System.out.format("%-15s%-15s%n", row);
                     }
-                    System.out.println("Description: " + book.getDescription());
+                    System.out.printf("\nDescription: " + book.getDescription() + "\n");
                     System.out.println(bookstore);
                 }
                 case 6 -> {
@@ -197,6 +197,11 @@ public class Menus{
                     }
                     System.out.println("\n" + "You are now logged out.");
                     continues = false;
+                    try{
+                        Thread.sleep(500);
+                    }catch(InterruptedException e){
+                        e.printStackTrace();
+                    }
                 }
                 default -> {
                     System.out.println("\nInvalid selection!");

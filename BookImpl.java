@@ -212,22 +212,24 @@ public class BookImpl implements BookDao{
             float price = resultSet.getFloat(3);
             Book book = new Book(title, author, price);
             books.add(book);
-
         }
+        int count = 0;
         for(Book book : books){
+            ++count;
             sum += book.getPrice();
             itemNum++;
             System.out.printf(
                     "%-17s%-2s%-60s%n",
-                    "Item: " + itemNum+ ": \t$" + String.format("%.2f", book.getPrice()),
+                    "Item: " + itemNum + ": \t$" + String.format("%.2f", book.getPrice()),
                     "|",
                     book.getTitle() + " by " + book.getAuthor()
             );
         }
+        if(count != 0){
             System.out.println("\nSubtotal: \t$" + String.format("%.2f", sum));
-            System.out.println("Tax: \t\t$" + String.format("%.2f", sum*tax));
-            System.out.println("---------------------");
-            total = (sum*tax) + sum;
+            System.out.println("Tax: \t\t$" + String.format("%.2f", sum * tax));
+            System.out.println("---------------------------");
+            total = (sum * tax) + sum;
             System.out.println("Total: \t\t$" + String.format("%.2f", total));
             System.out.println("""
                     ____________________________
@@ -249,9 +251,17 @@ public class BookImpl implements BookDao{
                     String sql2 = "TRUNCATE cart;";
                     PreparedStatement preparedStatement = connection.prepareStatement(sql2);
                     preparedStatement.executeUpdate();
-                        System.out.println("\nYour purchase was successful.\n");
-                        System.out.println("You were charged: $" + String.format("%.2f", total) + "\n\nThank you for shopping with us!");
-                        Menus.bookstoreMenu();
+                    try{
+                        CLS.cls();
+                    }catch(IOException e){
+                        e.printStackTrace();
+                    }catch(InterruptedException e){
+                        e.printStackTrace();
+                    }
+                    System.out.println("\nYour purchase was successful.\n");
+                    System.out.println("You were charged: $" + String.format("%.2f", total) + "\n\nThank you for shopping with us!");
+                    proceed = true;
+                    Menus.bookstoreMenu();
                 }else if(userChoice == 2){
                     try{
                         CLS.cls();
@@ -267,6 +277,11 @@ public class BookImpl implements BookDao{
                     System.out.println("\nInvalid selection.\n");
                 }
             }
-        return books;
+            return books;
+        }else{
+            System.out.println("\nYour shopping cart is empty!");
+            Menus.bookstoreMenu();
         }
+        return books;
     }
+}
